@@ -292,5 +292,5 @@ app.post('/api/usuarios/:id/favoritos', (req, res) => {
 ===================== */
 
 app.listen(PORT, () =>
-  console.log(`Servidor corriendo en http://localhost:${PORT}`)
+  console.log(`Servidor corriendo en https://celiradar-backend.onrender.com`)
 );

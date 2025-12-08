@@ -19,7 +19,7 @@ async function bootstrap() {
     origin: frontend,
     credentials: true,
   });
-  await app.listen(config.get<number>('API_PORT') || 3001);
+  await app.listen(config.get<number>('https://celiradar-backend.onrender.com') || 3001);
 }
 bootstrap();
 
