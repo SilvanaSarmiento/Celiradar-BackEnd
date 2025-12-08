@@ -13,13 +13,7 @@ async function bootstrap() {
 
   });
 
-  const config = app.get(ConfigService);
-  const frontend = config.get<string>('https://celiradar-backend.onrender.com') || 'http://localhost:5173';
-  app.enableCors({
-    origin: frontend,
-    credentials: true,
-  });
-  await app.listen(config.get<number>('https://celiradar-backend.onrender.com') || 3001);
+ await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
 
