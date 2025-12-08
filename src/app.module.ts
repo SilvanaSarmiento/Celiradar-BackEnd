@@ -14,6 +14,7 @@ import { ImagenesModule } from './imagenes/imagenes.module';
 
 @Module({
  imports: [
+  ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
         type: 'mysql',
         host: process.env.MYSQL_HOST,
