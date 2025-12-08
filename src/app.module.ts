@@ -14,23 +14,17 @@ import { ImagenesModule } from './imagenes/imagenes.module';
 
 @Module({
  imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
+    TypeOrmModule.forRoot({
         type: 'mysql',
-        host: config.get<string>('DB_HOST'),
-        port: parseInt(config.get<string>('DB_PORT', '3306')),
-        username: config.get<string>('DB_USERNAME'),
-        password: config.get<string>('DB_PASSWORD'),
-        database: config.get<string>('DB_NAME'),
-        autoLoadEntities: true,
+        host: "process.env.MYSQL_HOST",
+        port: parseInt(process.env.MYSQL_PORT ?? '3306'),
+        username: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD,
+        database: process.env.MYSQL_DB,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: config.get<string>('NODE_ENV') !== 'production',
-        // extra: { ssl: { rejectUnauthorized: false } }, // activar solo si Clever Cloud pide SSL
-      }),
-    }),
+        synchronize: true
+       }),
+    
   
     UsuariosModule,
     RecetasModule,
